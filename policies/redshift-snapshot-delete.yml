@@ -1,0 +1,11 @@
+policies:
+  - name: redshift-snapshot-delete
+    comment: Redshifti snapshots without nodelete exceptions and older than 2 weeks would be deleted
+    resource: redshift-snapshot
+    filters:
+      - type: age
+        op: gt
+        days: 14
+      - "tag:nodelete": absent
+    actions:
+      - delete

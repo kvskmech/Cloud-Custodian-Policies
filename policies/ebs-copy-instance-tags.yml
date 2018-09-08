@@ -1,0 +1,11 @@
+policies:
+  - name: ebs-copy-instance-tags
+    comment: Copy the tags from instance to EBS volume if the EBS volume is not tagged
+    resource: ebs
+    filters:
+      - type: value
+        key: "[length(Tags)][0]"
+        op: lte
+        value: 0
+    actions:
+      - type: copy-instance-tags
