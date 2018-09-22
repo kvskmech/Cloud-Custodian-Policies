@@ -7,7 +7,7 @@ Policy can be run with the following command
 
 custodian run --config=ebs-unattached-mark.yml --output-dir=./data --region=us-east-1 
 
-esources.json file will be created which will contain the filtered resources.
+resources.json file will be created which will contain the filtered resources.
 
 To run in another account by assuming cross-account role.
 
