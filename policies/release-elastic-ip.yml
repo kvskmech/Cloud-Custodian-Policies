@@ -1,0 +1,10 @@
+policies:
+    - name: release-elastic-ip
+      resource: network-addr
+      comment: Release Unattaached Elastic IP addresses
+      filters:
+         - not:
+            - "InstanceId": not-null
+      actions:
+         - type: release
+           force: false

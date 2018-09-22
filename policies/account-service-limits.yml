@@ -1,0 +1,16 @@
+policies:
+    - name: account-service-limits
+      resource: account
+      filters:
+        - type: service-limit
+          services:
+             - EBS
+          limits:
+             - Provisioned IOPS (SSD) storage (GiB)
+          threshold: 60.5
+      actions:
+        - type: request-limit-increase
+          notify: [email, email2]
+          ## You can use one of either percent-increase or an amount-increase.
+          percent-increase: 50
+          message: "Please raise the below account limit(s); \n {limits}"

@@ -1,0 +1,11 @@
+policies:
+   - name: ami-remove-launch-permissions
+     resource: ami
+     comment: filter amis that are 60 days old and remove launch permissions
+     filters:
+        - type: cross-account
+        - type: image-age
+          op: gt
+          days: 60
+     actions:
+        - remove-launch-permissions

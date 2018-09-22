@@ -1,0 +1,8 @@
+policies:
+    - name: security-groups-unused
+      resource: security-group
+      comment: delete unused security groups
+      filters:
+        - unused
+      actions:
+        - delete
