@@ -1,0 +1,18 @@
+accounts:
+- account_id: '123123123123'
+  name: account-1
+  regions:
+  - us-east-1
+  - us-west-2
+  role: arn:aws:iam::123123123123:role/CloudCustodian
+  tags:
+  - type:prod
+- account_id: '124596893123'
+  name: account-2
+  regions:
+  - us-east-1
+  - us-west-2
+  role: arn:aws:iam::124596893123:role/CloudCustodian
+  tags:
+  - type:nonprod
+
