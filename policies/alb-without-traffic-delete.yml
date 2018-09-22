@@ -1,0 +1,16 @@
+policies:
+   - name: alb-without-traffic-delete
+     resource: app-elb
+     comment: ALBs without instances and having request count metric zero for the past 14 days will be deleted
+     filters:
+      - "TargetGroups": []
+      - not:
+        - type: metrics
+          name: RequestCount
+          statistics: Maximum
+          dimensions: [TargetGroup, LoadBalancer]
+          days: 14
+          value: 0
+          op: greater-than
+     actions:
+      - delete

@@ -1,0 +1,9 @@
+policies:
+   - name: encypt-ebs-volumes
+     resource: ebs
+     comment: Encrypt EBS volumes that are not encrypted. Cloud Custodian automatically creates snapshots, stop the instances and reattach the encrypted volumes
+     filters:
+       - Encrypted: false
+     actions:
+       - type: encrypt-instance-volumes
+         key: alias/encrypted

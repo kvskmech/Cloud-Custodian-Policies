@@ -1,0 +1,8 @@
+policies:
+    - name: asg-unencrypted
+      resource: asg
+      comment: ASGs with unecnrypted AMIs in the launch config and instances with unencrypted ebs volumes will be deleted
+      filters:
+        - type: not-encrypted
+      actions:
+        - delete

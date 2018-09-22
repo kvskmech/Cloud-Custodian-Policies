@@ -1,0 +1,13 @@
+policies:
+   - name: rds-unused-delete
+     resource: rds
+     comment: RDS without any DB Connections will be deleted after taking snapshots
+     filters:
+       - type: metrics
+         name: DatabaseConnections
+         value: 0
+         days: 14
+         op: equal
+     actions:
+       - snapshot
+       - delete

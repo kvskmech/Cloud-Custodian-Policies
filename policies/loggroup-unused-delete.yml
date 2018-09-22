@@ -1,0 +1,9 @@
+policies:
+   - name: loggroup-unused-delete
+     resource: log-group
+     comment: Delete cloudwatch loggroups that are not written for the last 30 days
+     filters:
+        - type: last-write
+          days: 30
+     actions:
+        - delete

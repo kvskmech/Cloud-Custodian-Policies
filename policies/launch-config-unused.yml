@@ -1,0 +1,8 @@
+policies:
+   - name: launch-config-unused
+     resource: launch-config
+     comment: delete unused launch configurations 
+     filters:
+       - unused
+     actions:
+       - delete

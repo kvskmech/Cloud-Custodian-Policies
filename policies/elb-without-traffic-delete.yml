@@ -1,0 +1,16 @@
+policies:
+   - name: elb-without-traffic-delete
+     resource: elb
+     comment: ELBs without instances and having request count metric zero for the past 14 days will be deleted
+     filters:
+      - Instances: []
+      - not:
+        - type: metrics
+          name: RequestCount
+          statistics: Maximum
+          dimensions: [LoadBalancername]
+          days: 14
+          value: 0
+          op: greater-than
+     actions:
+      - delete

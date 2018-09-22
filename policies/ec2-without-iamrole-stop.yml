@@ -1,0 +1,8 @@
+policies:
+   - name: ec2-without-iamrole-stop
+     resource: ec2
+     comment: Stop EC2 instances without IAM role.
+     filters:
+        - IamInstanceProfile: absent
+     actions: 
+        - stop
