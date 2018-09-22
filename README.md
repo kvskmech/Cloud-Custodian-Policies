@@ -1,5 +1,5 @@
 # Cloud-Custodian-Policies
-Cloud Custodian Policies to clean up your AWS environment
+Cloud Custodian Policies to clean up and optimize your AWS environment
 
 
 
