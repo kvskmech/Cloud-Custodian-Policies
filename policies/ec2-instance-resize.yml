@@ -1,0 +1,28 @@
+policies:
+    - name: ec2-instance-resize
+      resource: ec2
+      comment: Downsize instances with less CPUUtilization
+      filters:
+         - type: value
+           key: InstanceType
+           op: in
+           value:
+             - m4.10xlarge
+             - m4.4xlarge
+         - type: instance-age
+           days: 14
+           op: gt
+         - type: metrics
+           name: CPUUtilization
+           days: 14
+           statistics: Maximum
+           op: less-than
+           value: 10
+      actions:
+         - type: resize
+           restart: true
+           type-map:
+               m4.4xlarge: m4.2xlarge
+               m4.10xlarge: m4.4xlarge
+
+   

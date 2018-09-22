@@ -2,7 +2,7 @@ policies:
    - name: ami-unused-deregister
      resource: ami
      comment: filter amis that are unused and 60 days old
-     filter:
+     filters:
         - type: unused
           value: true
         - type: image-age

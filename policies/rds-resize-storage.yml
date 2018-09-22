@@ -1,0 +1,14 @@
+policies:
+   - name: rds-resize-storage
+     resource: rds
+     comment: Resize RDS which are utilizing more than 90% of space and increase the storage to 30%
+     filters:
+       - type: metrics
+         name: FreeStorageSpace
+         percent-attr: AllocatedStorage
+         attr-multiplier: 1073741824
+         value: 90
+         op: greater-than
+     actions:
+       - type: resize
+         percent: 30

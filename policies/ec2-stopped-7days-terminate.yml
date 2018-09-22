@@ -9,7 +9,7 @@ policies:
        - type: instance-uptime
          op: gt
          days: 7
-       - type: mark-for-op
+       - type: marked-for-op
          tag: custodian-ec2-stopped-7days
          op: terminate
      actions:

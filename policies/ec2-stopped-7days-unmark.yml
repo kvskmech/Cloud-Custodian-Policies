@@ -9,5 +9,5 @@ policies:
          days: 7
      actions:
        - type: unmark
-         tag: 
-          - "custodian-ec2-stopped-7days"
+         tags: 
+         - "custodian-ec2-stopped-7days"

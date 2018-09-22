@@ -7,5 +7,5 @@ policies:
        - Attachments: not-null
      actions:
        - type: unmark
-         tag: 
+         tags: 
           - "custodian-ebs-unattached"

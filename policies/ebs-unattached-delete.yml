@@ -4,7 +4,7 @@ policies:
      comment: filter ebs volumes that are unattached and marked 
      filters:
        - Attachments: []
-       - type: mark-for-op
+       - type: marked-for-op
          tag: custodian-ebs-unattached
          op: delete
      actions:
