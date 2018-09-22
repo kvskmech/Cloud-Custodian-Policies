@@ -1,0 +1,17 @@
+policies:
+   - name: ec2-stopped-7days-terminate
+     resource: ec2
+     comment: Any instances that are marked for terminate on the resent day and is stopped for 7 days
+     query:
+       - instance-state-name: stopped
+     filters:
+       - "tag:custodian-ec2-stopped-7days": present
+       - type: instance-uptime
+         op: gt
+         days: 7
+       - type: mark-for-op
+         tag: custodian-ec2-stopped-7days
+         op: terminate
+     actions:
+       - type: terminate
+         force: true

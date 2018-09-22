@@ -1,0 +1,11 @@
+policies:
+   - name: ebs-unattached-delete
+     resource: ebs
+     comment: filter ebs volumes that are unattached and marked 
+     filters:
+       - Attachments: []
+       - type: mark-for-op
+         tag: custodian-ebs-unattached
+         op: delete
+     actions:
+       - delete

@@ -1,0 +1,13 @@
+policies:
+    - name: elb-configure-ssl-listener
+      resource: elb
+      comment: ELBs without ssl configured will be configured with ssl
+      filters:
+        - not:
+           - type: is-ssl
+      actions:
+        - type: set-ssl-listener-policy
+          name: SSLNegotiation-Policy-01
+          attributes:
+            - Protocol-SSLv3
+            - Protocol-TLSv1.1

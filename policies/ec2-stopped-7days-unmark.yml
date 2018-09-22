@@ -1,0 +1,13 @@
+policies:
+   - name: ec2-stopped-7days-unmark
+     resource: ec2
+     comment: Amy instances that are marked but started in the last 7 days will be unmarked
+     filters:
+       - "tag:custodian-ec2-stopped-7days": present
+       - type: instance-uptime
+         op: lte
+         days: 7
+     actions:
+       - type: unmark
+         tag: 
+          - "custodian-ec2-stopped-7days"

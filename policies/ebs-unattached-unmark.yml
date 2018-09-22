@@ -1,0 +1,11 @@
+policies:
+   - name: ebs-unattached-unmark
+     resource: ebs
+     comment: filter ebs volumes that are marked but attached and unmark them
+     filters:
+       - "tag:custodian-ebs-unattached": present
+       - Attachments: not-null
+     actions:
+       - type: unmark
+         tag: 
+          - "custodian-ebs-unattached"

@@ -1,0 +1,12 @@
+policies:
+   - name: ebs-unattached-mark
+     resource: ebs
+     comment: filter ebs volumes that are unuattached
+     filters:
+       - "tag:custodian-ebs-unattached": absent
+       - Attachments: []
+     actions:
+       - type: mark-for-op
+         tag: custodian-ebs-unattached
+         op: delete
+         days: 4

@@ -1,0 +1,16 @@
+policies:
+   - name: ec2-stopped-7days-mark
+     resource: ec2
+     comment: filter ec2 instances that are stopped for 7 days
+     query:
+       - instance-state-name: stopped
+     filters:
+       - "tag:custodian-ec2-stopped-7days": absent
+       - type: state-age
+         op: gt
+         days: 7
+     actions:
+       - type: mark-for-op
+         tag: custodian-ec2-stopped-7days
+         op: terminate
+         days: 2
