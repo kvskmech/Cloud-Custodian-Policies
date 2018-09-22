@@ -1,0 +1,9 @@
+policies:
+    - name: s3-encrypt-objects
+      resource: s3
+      filters:
+         - type: no-encryption-statement
+      actions:
+         - type: encrypt-keys
+           crypto: aws:kms
+           key-id: 9c3983be-c6cf-11e6-9d9d-cec0c932ce01
